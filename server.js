@@ -38,9 +38,9 @@ server.get("/:id", (req, response) => {
           return x.arrayBuffer();
         })
         .then((x) => {
-          var filename = __dirname + "\\" + req.params.id + ".jpg";
+          var filename = __dirname + "\\public\\" + req.params.id + ".jpg";
           return writeFilePromise(
-            "./" + req.params.id + ".jpg",
+            filename,
             Buffer.from(x)
           ).then((res) => filename);
         })
