@@ -4,8 +4,8 @@ var fetch = require("node-fetch");
 const { writeFile } = require("fs");
 const { promisify } = require("util");
 const writeFilePromise = promisify(writeFile);
-const API="https://rapid-image-api.herokuapp.com"
-// const API="http://localhost"
+// const API="https://rapid-image-api.herokuapp.com"
+const API="http://localhost:3000"
 var server = express();
 server.use("/api", jsonServer.defaults(), jsonServer.router("./db.json"));
 server.get("/",(req,response)=>{
@@ -50,5 +50,4 @@ server.get("/:id", (req, response) => {
         })
     });
 });
-
-server.listen(80);
+server.listen(process.env.PORT || 3000);
