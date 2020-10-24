@@ -1,0 +1,12 @@
+{
+    "name": "random-image-api",
+    "version": "1.0.0",
+    "dependencies": {
+        "json-server": "^0.15.0",
+        "express": "^4.17.1",
+        "node-fetch": "^2.6.1"
+    },
+    "scripts": {
+        "start": "node server.js"
+    }
+}
