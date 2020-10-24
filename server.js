@@ -14,6 +14,9 @@ server.get("/images",(req,response)=>{
   fetch(API+"/api/images")
   .then(res=>res.json()).then(res=>response.send(res))
 })
+server.get("/",(req,response)=>{
+  response.redirect(API+"/images")
+})
 server.get("/:id", (req, response) => {
   fetch(API+"/api/images/" + req.params.id)
     .then((res) => res.json())
