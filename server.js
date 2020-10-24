@@ -1,9 +1,6 @@
 var express = require("express");
 var jsonServer = require("json-server");
 var fetch = require("node-fetch");
-const { writeFile } = require("fs");
-const { promisify } = require("util");
-const writeFilePromise = promisify(writeFile);
 const API="https://rapid-image-api.herokuapp.com"
 // const API="http://localhost:3000"
 var server = express();
