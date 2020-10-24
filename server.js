@@ -46,7 +46,7 @@ server.get("/:id", (req, response) => {
           ).then((res) => filename);
         })
         .then((file) => {
-          response.sendFile(file);
+          response.redirect(API+"/"+req.params.id+".jpg");
           return file;
         })
     });
