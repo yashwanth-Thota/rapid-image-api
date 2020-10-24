@@ -7,6 +7,7 @@ const writeFilePromise = promisify(writeFile);
 const API="https://rapid-image-api.herokuapp.com"
 // const API="http://localhost:3000"
 var server = express();
+server.use(express.urlencoded({ extended: true }))
 server.use("/api", jsonServer.defaults(), jsonServer.router("./db.json"));
 server.use(express.static('public'))
 server.get("/",(req,response)=>{
@@ -34,21 +35,8 @@ server.get("/:id", (req, response) => {
       }
     })
     .then((url) => {
-      return fetch(url)
-        .then((x) => {
-          return x.arrayBuffer();
-        })
-        .then((x) => {
-          var filename = __dirname + "\\public\\" + req.params.id + ".jpg";
-          return writeFilePromise(
-            filename,
-            Buffer.from(x)
-          ).then((res) => filename);
-        })
-        .then((file) => {
-          response.redirect(API+"/"+req.params.id+".jpg");
-          return file;
-        })
+      response.set('Content-Type', 'text/html');
+      response.send(Buffer.from("<image src='"+url+"' />"))
     });
 });
 server.listen(process.env.PORT || 3000);
