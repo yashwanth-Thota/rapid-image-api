@@ -10,7 +10,7 @@ var server = express();
 server.use(express.urlencoded({ extended: true }))
 server.use("/api", jsonServer.defaults(), jsonServer.router("./db.json"));
 server.use(express.static('public'))
-server.get("/",(req,response)=>{
+server.get("/images",(req,response)=>{
   fetch(API+"/api/images")
   .then(res=>res.json()).then(res=>response.send(res))
 })
